@@ -43,7 +43,7 @@ const ContactForm = () => {
    //  }
 
 	const isContactExist = contacts.find (
-		contact => contact.name.toLowwerCase() == name.toLowwerCase ()
+		contact => contact.name.toLowwerCase() === name.toLowwerCase ()
 	);
 		if (isContactExist) {
 			Notify.failure(`${name} is already in contacts`);
