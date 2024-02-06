@@ -30,14 +30,14 @@ const ContactForm = () => {
     }
   };
 
-  const onSubmit = event => {
+const onSubmit = event => {
 	event.preventDefault();
 
-	if (
-	  contacts.find(
-		 contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
-	  )
-	) {
+	const isContactExist = contacts.find(
+	  contact => contact.name.toLowerCase() === name.toLowerCase()
+	);
+
+	if (isContactExist) {
 	  Notify.failure(`${name} is already in contacts`);
 	  return;
 	}
