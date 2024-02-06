@@ -31,31 +31,22 @@ const ContactForm = () => {
   };
 
   const onSubmit = event => {
-    event.preventDefault();
+	event.preventDefault();
 
-   //  if (
-   //    contacts.find(
-   //      contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
-   //    )
-   //  ) {
-   //    Notify.failure(`${name} is already in contacts`);
-   //    return;
-   //  }
+	if (
+	  contacts.find(
+		 contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+	  )
+	) {
+	  Notify.failure(`${name} is already in contacts`);
+	  return;
+	}
 
-	const isContactExist = contacts.find (
-		contact => contact.name.toLowwerCase() === name.toLowwerCase ()
-	);
-		if (isContactExist) {
-			Notify.failure(`${name} is already in contacts`);
-			return;
-		}
+	dispatch(addContact({ name, number }));
 
-
-    dispatch(addContact({ name, number }));
-
-    setName('');
-    setNumber('');
-  };
+	setName('');
+	setNumber('');
+ };
 
   return (
     <Form onSubmit={onSubmit}>
